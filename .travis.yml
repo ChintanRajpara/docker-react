@@ -1,0 +1,9 @@
+sudo: require
+servicies:
+  - docker
+
+before_install:
+  - docker build -t chintanrajpara/docker-react  -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true chintanrajpara/docker-react npm run test -- --coverage
